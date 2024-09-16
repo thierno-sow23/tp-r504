@@ -1,8 +1,5 @@
 name: Tests unitaires
-
 on: [push]
-
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,6 +9,5 @@ jobs:
         uses: actions/setup-python@v4
        -name: installer pytest
         run: pip3 install pytest
-
       - name: run tests
         run: pytest TP1/test.py
