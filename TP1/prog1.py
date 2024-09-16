@@ -1,14 +1,12 @@
-print ( " Hello , World ! " )
 # prog1.py
-
 
 import fonctions as f
 
 def main():
     try:
-        # Saisie des nombres
-        a = int(input("Entrez la base (a) : "))
-        b = int(input("Entrez l'exposant (b) : "))
+        # Tester avec des flottants au lieu des entiers
+        a = float(input("Entrez la base (a) : "))  # Passez un flottant pour le test
+        b = float(input("Entrez l'exposant (b) : "))  # Passez un flottant pour le test
         
         # Appel de la fonction puissance et affichage du résultat
         res = f.puissance(a, b)
@@ -20,5 +18,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
