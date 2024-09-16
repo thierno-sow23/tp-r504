@@ -1,13 +1,17 @@
 print ( " Hello , World ! " )
-while True:
-    try:
-        # Saisie du nombre
-        nombre = float(input("Entrez un nombre (ou CTRL-C pour quitter) : "))
-        
-        # Calcul et affichage du carré du nombre
-        carre = nombre ** 2
-        print(f"Le carré de {nombre} est {carre}")
-    except ValueError:
-        # Gestion des erreurs si l'entrée n'est pas un nombre
-        print("Ce n'est pas un nombre valide. Veuillez réessayer.")
+# prog1.py
+
+import fonctions as f
+
+def main():
+    # Saisie des nombres
+    a = int(input("Entrez la base (a) : "))
+    b = int(input("Entrez l'exposant (b) : "))
+    
+    # Appel de la fonction puissance et affichage du résultat
+    res = f.puissance(a, b)
+    print(f"{a} élevé à la puissance {b} est {res}")
+
+if __name__ == "__main__":
+    main()
 
