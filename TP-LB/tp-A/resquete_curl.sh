@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# l'option -s sert à ...
 # Faire 500 appels à localhost:83
 for i in {1..500}
 do
