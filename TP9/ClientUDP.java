@@ -1,8 +1,10 @@
 import java.io.*;
 import java.net.*;
 
-public class ClientUDP {
-    public static void main(String[] args) throws IOException {
+public class ClientUDP
+{
+    public static void main(String[] args) throws IOException
+	{
         // Récupérer l'adresse IP locale
         InetAddress addr = InetAddress.getLocalHost();
         System.out.println("Adresse = " + addr.getHostName());
