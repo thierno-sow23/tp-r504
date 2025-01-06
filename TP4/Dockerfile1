@@ -1,0 +1,41 @@
+# Étape 1 : Utiliser l'image officielle Python 3.11 comme base
+FROM python:3.11
+
+# Étape 2 : Mettre à jour les paquets du système
+# - apt-get update : Met à jour la liste des paquets disponibles
+# - apt-get upgrade : Installe les dernières versions des paquets existants
+RUN apt-get update && apt-get upgrade -y
+
+# Étape 3 : Installer les paquets système requis pour le développement MySQL
+# - build-essential : Fournit les outils de base pour la compilation (gcc, make, etc.)
+# - pkg-config : Gestionnaire de configuration pour les bibliothèques
+# - default-libmysqlclient-dev : Bibliothèque de développement pour MySQL
+RUN apt-get install -y \
+    build-essential \
+    pkg-config \
+    default-libmysqlclient-dev
+
+# Étape 4 : Mettre à jour pip (inclus déjà avec l'image Python)
+RUN pip install --upgrade pip
+
+# Étape 5 : Installer les bibliothèques Python nécessaires via pip
+# - flask-mysqldb : Permet d'utiliser MySQL avec Flask
+# - mysql-connector-python : Connecteur officiel Python pour MySQL
+RUN pip install flask-mysqldb mysql-connector-python
+
+# Étape 6 : Créer le dossier /srv/templates dans le conteneur
+RUN mkdir -p /srv/templates
+
+# Étape 7 : Copier les fichiers nécessaires dans le conteneur
+# - index.html sera copié dans /srv/templates/
+# - app_1.py sera copié dans /srv/
+COPY index.html /srv/templates/
+COPY app_1.py /srv/
+
+# Étape 8 : Spécifier le répertoire de travail pour le conteneur
+WORKDIR /srv/
+
+# Étape 9 : Fournir une commande par défaut pour exécuter l'application Flask
+# Supposons que app_1.py démarre le serveur Flask
+#CMD ["python", "app_1.py"]
+CMD ["flask","--app","/srv/app_1","run","--host=0.0.0.0"]
